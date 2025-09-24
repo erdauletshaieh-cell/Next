@@ -1,1 +1,540 @@
-# Next
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEXT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #111733;
+      --muted: #8ea0d0;
+      --brand: #6C7CFF; 
+      --brand-2: #2EE6A6; 
+      --text: #E9EEFF;
+      --chip: rgba(108,124,255,0.12);
+      --chip-b: rgba(46,230,166,0.14);
+      --ring: rgba(108,124,255,0.45);
+      --danger: #FF6C8C;
+      --warn: #FFCF5F;
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
+    .ring-brand:focus { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+    .btn { transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
+    .btn:active { transform: translateY(1px) scale(0.99); }
+    .card { transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.25); border-color: rgba(108,124,255,0.35); }
+    .badge { border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
+    .chip { background: var(--chip); border: 1px solid rgba(108,124,255,0.25); }
+    .chip-2 { background: var(--chip-b); border: 1px solid rgba(46,230,166,0.35); }
+    .scrollbar::-webkit-scrollbar{height:10px;width:10px}
+    .scrollbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:8px}
+    .scrollbar::-webkit-scrollbar-track{background:transparent}
+    .modal-backdrop { background: rgba(3,6,20,0.75); backdrop-filter: blur(4px); }
+    .outline-gradient { border: 1px solid transparent; background-image: linear-gradient(var(--card), var(--card)), linear-gradient(90deg, rgba(108,124,255,0.6), rgba(46,230,166,0.6)); background-origin: border-box; background-clip: padding-box, border-box; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="px-6 lg:px-10 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl outline-gradient grid place-items-center shadow-lg">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7.5C4 6.12 5.12 5 6.5 5h5C12.88 5 14 6.12 14 7.5v9c0 1.38-1.12 2.5-2.5 2.5h-5C5.12 19 4 17.88 4 16.5v-9Z" stroke="url(#g1)" stroke-width="1.5"/>
+            <path d="M14 10h3.5A2.5 2.5 0 0 1 20 12.5v3A2.5 2.5 0 0 1 17.5 18H14" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="4" y1="5" x2="20" y2="19" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6C7CFF"/><stop offset="1" stop-color="#2EE6A6"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="14" y1="10" x2="20" y2="18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6C7CFF"/><stop offset="1" stop-color="#2EE6A6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">NEXT</h1>
+          <p class="text-sm text-[color:var(--muted)]">Каталог направлений в IT для старта карьеры</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="favoritesBtn" class="btn glass px-4 py-2 rounded-xl text-sm hover:shadow-md hover:shadow-indigo-500/10">
+          ⭐ Избранное <span id="favCount" class="ml-2 inline-flex items-center justify-center w-6 h-6 rounded-md bg-[color:var(--brand)]/20 text-[color:var(--brand)] font-semibold">0</span>
+        </button>
+        <a href="https://careerfoundry.com/en/blog/" target="_blank" rel="noopener noreferrer" class="btn bg-[color:var(--brand)] text-black font-semibold px-4 py-2 rounded-xl hover:bg-indigo-400">Внешние ресурсы</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto glass rounded-2xl p-6 md:p-8">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6">
+        <div class="flex-1">
+          <h2 class="text-xl md:text-2xl font-bold">Найдите своё направление в IT</h2>
+          <p class="text-[15px] md:text-base text-[color:var(--muted)] mt-2">Ищите по ключевым словам, фильтруйте по областям, изучайте навыки и шаги для старта. Добавляйте понравившиеся в избранное.</p>
+        </div>
+        <div class="flex-1 w-full">
+          <div class="flex gap-3">
+            <div class="relative flex-1">
+              <input id="searchInput" type="text" placeholder="Поиск: например, JavaScript, аналитик, UX..." class="w-full glass ring-brand rounded-xl px-4 py-3 pr-10 placeholder:text-[color:var(--muted)]"/>
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[color:var(--muted)]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+            <button id="clearSearch" class="btn px-4 py-3 rounded-xl glass text-sm hover:bg-white/10">Сброс</button>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <button data-filter="all" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10 active">Все</button>
+            <button data-filter="Разработка" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10">Разработка</button>
+            <button data-filter="Тестирование" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10">Тестирование</button>
+            <button data-filter="Data" class="filter-btn btn px-3 py-2 rounded-lg chip-2 text-sm hover:bg-white/10">Data</button>
+            <button data-filter="Дизайн" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10">Дизайн</button>
+            <button data-filter="DevOps" class="filter-btn btn px-3 py-2 rounded-lg chip-2 text-sm hover:bg-white/10">DevOps</button>
+            <button data-filter="Безопасность" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10">Безопасность</button>
+            <button data-filter="Менеджмент" class="filter-btn btn px-3 py-2 rounded-lg chip text-sm hover:bg-white/10">Менеджмент</button>
+
+            <div class="ml-auto flex items-center gap-2">
+              <label class="text-sm text-[color:var(--muted)]">Сортировка:</label>
+              <select id="sortSelect" class="glass ring-brand px-3 py-2 rounded-lg text-sm">
+                <option value="pop">По популярности</option>
+                <option value="az">А → Я</option>
+                <option value="za">Я → А</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div id="resultsCount" class="text-sm text-[color:var(--muted)] mt-6">Найдено: 0 направлений</div>
+      <div id="cardsWrap" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4"></div>
+    </div>
+  </main>
+
+  <footer class="px-6 lg:px-10 mt-12 pb-12">
+    <div class="max-w-7xl mx-auto glass rounded-2xl p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
+        <div>
+          <h3 class="font-bold text-lg">С чего начать?</h3>
+          <p class="text-[color:var(--muted)] mt-1">Выберите направление, пройдите по шагам дорожной карты и выделяйте 3–5 ключевых навыков для фокуса на ближайший месяц.</p>
+        </div>
+        <div class="flex gap-3">
+          <button id="starterBtn" class="btn bg-[color:var(--brand)] text-black font-semibold px-4 py-2 rounded-xl hover:bg-indigo-400">Гид по старту</button>
+          <a href="https://roadmap.sh/" target="_blank" rel="noopener noreferrer" class="btn glass px-4 py-2 rounded-xl hover:bg-white/10">Готовые роадмапы</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modalBackdrop" class="hidden fixed inset-0 modal-backdrop z-40"></div>
+
+  <div id="detailsModal" class="hidden fixed inset-0 z-50 p-4 overflow-y-auto">
+    <div class="max-w-3xl mx-auto mt-10 mb-16 glass rounded-2xl p-6 md:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div id="detailsBadge" class="inline-flex items-center gap-2 badge px-3 py-1 rounded-lg text-xs text-[color:var(--muted)]"></div>
+          <h3 id="detailsTitle" class="text-2xl font-bold mt-2">Заголовок</h3>
+          <p id="detailsDesc" class="text-[color:var(--muted)] mt-2"></p>
+        </div>
+        <button id="detailsClose" class="btn glass rounded-lg p-2 hover:bg-white/10" aria-label="Закрыть">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="font-semibold">Ключевые навыки</h4>
+        <div id="detailsSkills" class="mt-3 flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="font-semibold">Дорожная карта (первые шаги)</h4>
+        <ol id="detailsRoadmap" class="mt-3 grid gap-2"></ol>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="font-semibold">Полезные ссылки</h4>
+        <div id="detailsLinks" class="mt-3 flex flex-wrap gap-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="favoritesModal" class="hidden fixed inset-0 z-50 p-4 overflow-y-auto">
+    <div class="max-w-2xl mx-auto mt-10 mb-16 glass rounded-2xl p-6 md:p-8">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold">Избранное</h3>
+        <button id="favoritesClose" class="btn glass rounded-lg p-2 hover:bg-white/10" aria-label="Закрыть">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div id="favoritesList" class="mt-4 grid sm:grid-cols-2 gap-3"></div>
+    </div>
+  </div>
+
+  <div id="starterModal" class="hidden fixed inset-0 z-50 p-4 overflow-y-auto">
+    <div class="max-w-2xl mx-auto mt-10 mb-16 glass rounded-2xl p-6 md:p-8">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold">Гид по старту</h3>
+        <button id="starterClose" class="btn glass rounded-lg p-2 hover:bg-white/10" aria-label="Закрыть">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <ol class="mt-4 grid gap-3 text-[15px]">
+        <li class="glass rounded-xl p-4"><b>1. Определите цель</b> — выберите 1 направление и сфокусируйтесь на нём 4–6 недель.</li>
+        <li class="glass rounded-xl p-4"><b>2. План обучения</b> — 1–2 курса + 2–3 мини-проекта.</li>
+        <li class="glass rounded-xl p-4"><b>3. Практика</b> — ежедневно 60–90 минут. Делайте заметные маленькие шаги.</li>
+        <li class="glass rounded-xl p-4"><b>4. Портфолио</b> — оформите 1–2 работы с описанием задачи и результата.</li>
+        <li class="glass rounded-xl p-4"><b>5. Коммьюнити</b> — задавайте вопросы, участвуйте в чатиках, митапах.</li>
+      </ol>
+      <div class="mt-5 flex gap-2">
+        <a class="btn bg-[color:var(--brand)] text-black font-semibold px-4 py-2 rounded-xl hover:bg-indigo-400" href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer">Учиться кодить</a>
+        <a class="btn glass px-4 py-2 rounded-xl hover:bg-white/10" href="https://designcourse.com/" target="_blank" rel="noopener noreferrer">Учиться дизайну</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const catalog = [
+      {
+        id: 'dev-fe',
+        title: 'Frontend‑разработчик',
+        category: 'Разработка',
+        popularity: 96,
+        description: 'Создаёт интерфейсы сайтов и веб‑приложений. Работает с HTML, CSS и JavaScript.',
+        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Git'],
+        roadmap: ['Основы HTML/CSS', 'Базовый JavaScript', 'Один фреймворк (React/Vue)', 'Сборка и деплой', 'Мини‑портфолио (2–3 проекта)'],
+        links: [
+          { label: 'HTML справочник', url: 'https://developer.mozilla.org/ru/docs/Web/HTML' },
+          { label: 'React документация', url: 'https://react.dev/' }
+        ]
+      },
+      {
+        id: 'qa',
+        title: 'Тестировщик (QA)',
+        category: 'Тестирование',
+        popularity: 85,
+        description: 'Ищет дефекты, пишет тест‑кейсы, автоматизирует проверки для стабильной работы продукта.',
+        skills: ['Тест‑дизайн', 'Jira', 'Postman', 'SQL', 'Автотесты'],
+        roadmap: ['Основы тест‑дизайна', 'Практика ручного тестирования', 'API и Postman', 'База SQL', 'Введение в автотесты'],
+        links: [
+          { label: 'Техники тест‑дизайна', url: 'https://softwaretestingfundamentals.com/' },
+          { label: 'Postman', url: 'https://www.postman.com/' }
+        ]
+      },
+      {
+        id: 'ds',
+        title: 'Data Scientist',
+        category: 'Data',
+        popularity: 78,
+        description: 'Извлекает инсайты из данных, строит модели и оценивает их качество.',
+        skills: ['Python', 'Pandas', 'ML', 'Визуализация', 'Статистика'],
+        roadmap: ['Python и NumPy', 'Pandas и визуализация', 'Классические ML‑модели', 'Валидация и метрики', 'Пет‑проект'],
+        links: [
+          { label: 'Pandas', url: 'https://pandas.pydata.org/' },
+          { label: 'Scikit‑learn', url: 'https://scikit-learn.org/' }
+        ]
+      },
+      {
+        id: 'devops',
+        title: 'DevOps инженер',
+        category: 'DevOps',
+        popularity: 70,
+        description: 'Автоматизирует сборку, тестирование и поставку продукта. Настраивает инфраструктуру.',
+        skills: ['Linux', 'Docker', 'CI/CD', 'Cloud', 'Monitoring'],
+        roadmap: ['Linux основы', 'Сети и Docker', 'CI/CD конвейеры', 'Облака (AWS/GCP/Azure)', 'Мониторинг и логи'],
+        links: [
+          { label: 'Docker', url: 'https://docs.docker.com/' },
+          { label: 'Roadmap DevOps', url: 'https://roadmap.sh/devops' }
+        ]
+      },
+      {
+        id: 'uxui',
+        title: 'UX/UI дизайнер',
+        category: 'Дизайн',
+        popularity: 82,
+        description: 'Проектирует опыт пользователя и визуальные интерфейсы: от прототипов до макетов.',
+        skills: ['UX‑исследования', 'Прототипы', 'Figma', 'Типографика', 'UI‑киты'],
+        roadmap: ['Дизайн‑мышление', 'Архитектура экранов', 'Figma практикум', 'Дизайн‑система', 'Портфолио кейс'],
+        links: [
+          { label: 'Figma', url: 'https://www.figma.com/' },
+          { label: 'Laws of UX', url: 'https://lawsofux.com/' }
+        ]
+      },
+      {
+        id: 'sec',
+        title: 'Специалист по кибербезопасности',
+        category: 'Безопасность',
+        popularity: 68,
+        description: 'Анализирует риски, повышает безопасность систем и реагирует на инциденты.',
+        skills: ['Сети', 'Linux', 'OWASP', 'SIEM', 'Threat Modeling'],
+        roadmap: ['Основы сетей и ОС', 'Безопасность веб‑прил', 'Практика OWASP', 'Логи и SIEM', 'CTF‑задачи'],
+        links: [
+          { label: 'OWASP Top 10', url: 'https://owasp.org/www-project-top-ten/' },
+          { label: 'TryHackMe', url: 'https://tryhackme.com/' }
+        ]
+      },
+      {
+        id: 'pm',
+        title: 'Product Manager',
+        category: 'Менеджмент',
+        popularity: 74,
+        description: 'Определяет стратегию продукта, гипотезы и приоритеты, синхронизирует команду.',
+        skills: ['CustDev', 'Аналитика', 'Приоритизация', 'Roadmap', 'Коммуникации'],
+        roadmap: ['Интервью с пользователями', 'Метрики продукта', 'Постановка целей', 'Бэклог и приоритеты', 'Запуск и анализ'],
+        links: [
+          { label: 'Lean Startup', url: 'https://theleanstartup.com/' },
+          { label: 'Product lessons', url: 'https://www.reforge.com/blog' }
+        ]
+      }
+    ];
+
+    const state = {
+      query: '',
+      filter: 'all',
+      sort: 'pop',
+      favorites: new Set(JSON.parse(localStorage.getItem('next:favs') || '[]')),
+    };
+
+    const cardsWrap = document.getElementById('cardsWrap');
+    const resultsCount = document.getElementById('resultsCount');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+    const sortSelect = document.getElementById('sortSelect');
+    const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const detailsModal = document.getElementById('detailsModal');
+    const detailsClose = document.getElementById('detailsClose');
+    const favoritesBtn = document.getElementById('favoritesBtn');
+    const favoritesModal = document.getElementById('favoritesModal');
+    const favoritesClose = document.getElementById('favoritesClose');
+    const favoritesList = document.getElementById('favoritesList');
+    const favCount = document.getElementById('favCount');
+
+    const starterBtn = document.getElementById('starterBtn');
+    const starterModal = document.getElementById('starterModal');
+    const starterClose = document.getElementById('starterClose');
+
+    const detailsTitle = document.getElementById('detailsTitle');
+    const detailsDesc = document.getElementById('detailsDesc');
+    const detailsSkills = document.getElementById('detailsSkills');
+    const detailsRoadmap = document.getElementById('detailsRoadmap');
+    const detailsLinks = document.getElementById('detailsLinks');
+    const detailsBadge = document.getElementById('detailsBadge');
+
+    const saveFavs = () => localStorage.setItem('next:favs', JSON.stringify([...state.favorites]));
+    const updateFavCount = () => favCount.textContent = state.favorites.size;
+
+    function openModal(m) {
+      modalBackdrop.classList.remove('hidden');
+      m.classList.remove('hidden');
+    }
+    function closeModal(m) {
+      m.classList.add('hidden');
+      if (document.querySelectorAll('[id$="Modal"]:not(.hidden)').length === 0) {
+        modalBackdrop.classList.add('hidden');
+      }
+    }
+
+    function highlightFilters() {
+      filterBtns.forEach(b => {
+        const active = (state.filter === 'all' && b.dataset.filter === 'all') || (b.dataset.filter === state.filter);
+        b.classList.toggle('outline-gradient', active);
+      });
+    }
+
+    function filtered() {
+      const q = state.query.trim().toLowerCase();
+      let list = catalog.filter(item => {
+        const matchFilter = state.filter === 'all' ? true : item.category === state.filter;
+        const matchQuery = q === '' ? true :
+          item.title.toLowerCase().includes(q) ||
+          item.category.toLowerCase().includes(q) ||
+          item.skills.some(s => s.toLowerCase().includes(q)) ||
+          item.description.toLowerCase().includes(q);
+        return matchFilter && matchQuery;
+      });
+
+      if (state.sort === 'pop') list.sort((a,b)=> b.popularity - a.popularity);
+      if (state.sort === 'az') list.sort((a,b)=> a.title.localeCompare(b.title));
+      if (state.sort === 'za') list.sort((a,b)=> b.title.localeCompare(a.title));
+
+      return list;
+    }
+
+    function cardTemplate(item) {
+      const isFav = state.favorites.has(item.id);
+      return `
+        <article class="card glass rounded-2xl p-5 border border-white/10 flex flex-col" data-id="${item.id}">
+          <div class="flex items-start justify-between gap-3">
+            <span class="badge rounded-lg px-3 py-1 text-xs">${item.category}</span>
+            <button class="btn fav-toggle rounded-lg px-2 py-2 ${isFav? 'bg-[color:var(--brand)]/20 text-[color:var(--brand)]':'glass hover:bg-white/10'}" title="Добавить в избранное" aria-label="Избранное">
+              ${isFav ? '⭐' : '☆'}
+            </button>
+          </div>
+          <h3 class="text-lg font-bold mt-3">${item.title}</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-2">${item.description}</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${item.skills.slice(0,4).map(s=>`<span class="px-3 py-1 rounded-lg text-xs chip">${s}</span>`).join('')}
+          </div>
+
+          <div class="mt-4 flex items-center justify-between">
+            <div class="text-xs text-[color:var(--muted)]">Популярность: <b>${item.popularity}</b></div>
+            <div class="flex gap-2">
+              <button class="btn details-btn glass px-3 py-2 rounded-lg text-sm hover:bg-white/10">Подробнее</button>
+              <button class="btn roadmap-btn bg-[color:var(--brand)] text-black font-semibold px-3 py-2 rounded-lg hover:bg-indigo-400">Дорожная карта</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function render() {
+      const list = filtered();
+      resultsCount.textContent = `Найдено: ${list.length} направлений`;
+      cardsWrap.innerHTML = list.map(cardTemplate).join('');
+
+      cardsWrap.querySelectorAll('.details-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.closest('article').dataset.id;
+          openDetails(id);
+        });
+      });
+      cardsWrap.querySelectorAll('.roadmap-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.closest('article').dataset.id;
+          openDetails(id, { scrollTo: 'roadmap' });
+        });
+      });
+      cardsWrap.querySelectorAll('.fav-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.closest('article').dataset.id;
+          toggleFav(id);
+        });
+      });
+    }
+
+    function openDetails(id, opts = {}) {
+      const item = catalog.find(x => x.id === id);
+      if (!item) return;
+      detailsTitle.textContent = item.title;
+      detailsDesc.textContent = item.description;
+      detailsBadge.textContent = item.category;
+
+      detailsSkills.innerHTML = item.skills.map(s => `<span class="px-3 py-1 rounded-lg text-xs chip">${s}</span>`).join('');
+      detailsRoadmap.innerHTML = item.roadmap.map((step, i) => `
+        <li class="glass rounded-xl p-3 text-sm"><span class="inline-flex w-6 h-6 items-center justify-center rounded-md bg-[color:var(--brand)]/20 text-[color:var(--brand)] font-semibold mr-2">${i+1}</span>${step}</li>
+      `).join('');
+      detailsLinks.innerHTML = item.links.map(l => `
+        <a class="btn glass px-3 py-2 rounded-lg text-sm hover:bg-white/10" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>
+      `).join('');
+
+      openModal(detailsModal);
+
+      if (opts.scrollTo === 'roadmap') {
+        setTimeout(()=> {
+          detailsRoadmap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    }
+
+    function toggleFav(id) {
+      if (state.favorites.has(id)) state.favorites.delete(id);
+      else state.favorites.add(id);
+      saveFavs();
+      updateFavCount();
+      renderFavorites();
+      render();
+    }
+
+    function renderFavorites() {
+      const favItems = catalog.filter(c => state.favorites.has(c.id));
+      favoritesList.innerHTML = favItems.length
+        ? favItems.map(item => `
+          <div class="glass rounded-xl p-4 flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs text-[color:var(--muted)]">${item.category}</div>
+              <div class="font-semibold">${item.title}</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                ${item.skills.slice(0,3).map(s=>`<span class="px-2.5 py-1 rounded-lg text-xs chip">${s}</span>`).join('')}
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn glass px-3 py-2 rounded-lg text-sm hover:bg-white/10" data-open="${item.id}">Открыть</button>
+              <button class="btn px-3 py-2 rounded-lg text-sm bg-[color:var(--danger)]/20 text-[color:var(--danger)] hover:bg-[color:var(--danger)]/30" data-remove="${item.id}">Убрать</button>
+            </div>
+          </div>
+        `).join('')
+        : `<div class="text-[color:var(--muted)] text-sm">Пока пусто. Добавляйте направления из каталога ⭐</div>`;
+
+      favoritesList.querySelectorAll('[data-open]').forEach(btn=>{
+        btn.addEventListener('click', (e)=> openDetails(e.currentTarget.dataset.open));
+      });
+      favoritesList.querySelectorAll('[data-remove]').forEach(btn=>{
+        btn.addEventListener('click', (e)=> { toggleFav(e.currentTarget.dataset.remove); });
+      });
+    }
+
+    function init() {
+      updateFavCount();
+      highlightFilters();
+      render();
+      renderFavorites();
+
+      let t;
+      searchInput.addEventListener('input', (e)=>{
+        clearTimeout(t);
+        t = setTimeout(()=>{
+          state.query = e.target.value;
+          render();
+        }, 180);
+      });
+
+      clearSearch.addEventListener('click', ()=>{
+        searchInput.value = '';
+        state.query = '';
+        render();
+      });
+
+      filterBtns.forEach(b=>{
+        b.addEventListener('click', ()=>{
+          state.filter = b.dataset.filter;
+          highlightFilters();
+          render();
+        });
+      });
+
+      sortSelect.addEventListener('change', (e)=>{
+        state.sort = e.target.value;
+        render();
+      });
+
+      detailsClose.addEventListener('click', ()=> closeModal(detailsModal));
+      favoritesBtn.addEventListener('click', ()=> { renderFavorites(); openModal(favoritesModal); });
+      favoritesClose.addEventListener('click', ()=> closeModal(favoritesModal));
+      starterBtn.addEventListener('click', ()=> openModal(starterModal));
+      starterClose.addEventListener('click', ()=> closeModal(starterModal));
+      modalBackdrop.addEventListener('click', ()=>{
+        [detailsModal, favoritesModal, starterModal].forEach(m => m.classList.add('hidden'));
+        modalBackdrop.classList.add('hidden');
+      });
+
+      document.addEventListener('keydown', (e)=>{
+        if (e.key === 'Escape') {
+          [detailsModal, favoritesModal, starterModal].forEach(m => m.classList.add('hidden'));
+          modalBackdrop.classList.add('hidden');
+        }
+      });
+    }
+
+    init();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9843c927003fe4c8',t:'MTc1ODczMjY3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
